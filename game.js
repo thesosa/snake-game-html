@@ -38,6 +38,9 @@ let tail = 5;
 const gs = 20,
   tc = 20;
 
+// half a tile, useful for setting the apple's center
+const half = gs / 2;
+
 // apple position
 let ax = Math.floor(Math.random() * tc),
   ay = Math.floor(Math.random() * tc);
@@ -94,7 +97,9 @@ function game() {
 
   // draw apple
   ctx.fillStyle = 'red';
-  ctx.fillRect(ax * gs, ay * gs, gs - 2, gs - 2);
+  ctx.beginPath();
+  ctx.arc(ax * gs + half, ay * gs + half, half - 2, 0, 2 * Math.PI);
+  ctx.fill();
 }
 
 // input handler function
